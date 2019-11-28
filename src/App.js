@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import firebase from './firebase';
+import QuestionList from './QuestionList';
+import QuestionThread from './QuestionThread';
 
 // function App() {
 class App extends React.Component {
@@ -8,8 +10,9 @@ class App extends React.Component {
     super();
     this.state = {
       questionList: [],
-      dbRef: null,
-      questionInput: ""
+      dbRef: {},
+      questionInput: "",
+      selectedQuestion: null
     }
   }
 
@@ -22,7 +25,6 @@ class App extends React.Component {
 
     dbRef.on('value', (snapshot) => {
       const questions = snapshot.val();
-      console.log('value of questions:',questions);
 
       const questionList = [];
       for (let key in questions) {
@@ -61,20 +63,24 @@ class App extends React.Component {
     }
   }
 
+  selectQuestion = (id=null) => {
+    this.setState({
+      selectedQuestion: id
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <h1>Cleverly Named Questions App</h1>
-        <form onSubmit={this.questionSubmit}>
-          <label htmlFor="questionInput">Enter your question : </label>
-          <input type="text" name="questionInput" id="questionInput" value={this.state.questionInput} onChange={this.inputChange} />
-          <button type="submit">Ask Question</button>
-        </form>
-        <ul>
-          {this.state.questionList.map((question) => {
-            return <li key={question.key}>{question.text}</li>
-          })}
-        </ul>
+        {
+          (this.state.selectedQuestion) ? (
+            <QuestionThread selectedQuestion={this.state.selectedQuestion} returnFunction={this.selectQuestion} />
+          ) :
+          (
+            <QuestionList questionList={this.state.questionList} inputChange={this.inputChange} questionSubmit={this.questionSubmit} questionInput={this.state.questionInput} questionSelect={this.selectQuestion} />
+          )
+        }
       </div>
     );
   }
