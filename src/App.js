@@ -84,10 +84,21 @@ class App extends React.Component {
           <main>
             {
               (this.state.selectedQuestion) ? (
-                <QuestionThread selectedQuestion={this.state.selectedQuestion} returnFunction={this.selectQuestion} interactedWith={this.state.interactedWith} />
+                <QuestionThread
+                  selectedQuestion={this.state.selectedQuestion}
+                  returnFunction={this.selectQuestion}
+                  interactedWith={this.state.interactedWith} 
+                />
               ) :
               (
-                <QuestionList questionList={this.state.questionList} inputChange={this.inputChange} questionSubmit={this.questionSubmit} questionInput={this.state.questionInput} questionSelect={this.selectQuestion} interactedWith={this.state.interactedWith} />
+                <QuestionList
+                  questionList={this.state.questionList}
+                  inputChange={this.inputChange}
+                  questionSubmit={this.questionSubmit}
+                  questionInput={this.state.questionInput}
+                  questionSelect={this.selectQuestion}
+                  interactedWith={this.state.interactedWith}
+                />
               )
             }
           </main>

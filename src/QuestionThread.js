@@ -74,21 +74,37 @@ class QuestionThread extends React.Component {
     render() {
         return (
             <div>
-                <button className="returnButton" onClick={this.exit}>Return to questions list</button>
+                <button
+                    className="returnButton"
+                    onClick={this.exit}
+                >
+                    Return to questions list
+                </button>
                 <h2>{this.state.question}</h2>
                 <ul>
                     {this.state.answers.map((answer,index) => {
                         return (
                             <li key={this.props.selectedQuestion+index}>
                                 <p className="textContent">{answer.text}</p>
-                                <VoteKnob dbRef={answer.answerRef} upvotes={answer.upvotes} voteKey={this.props.selectedQuestion+answer.answerKey} interactedWith={this.props.interactedWith} />
+                                <VoteKnob
+                                    dbRef={answer.answerRef}
+                                    upvotes={answer.upvotes}
+                                    voteKey={this.props.selectedQuestion+answer.answerKey}
+                                    interactedWith={this.props.interactedWith}
+                                />
                             </li>
                         )
                     })}
                 </ul>
                 <form onSubmit={this.answerSubmit}>
                     <label htmlFor="answerInput">Enter your answer : </label>
-                    <input type="text" name="answerInput" id="answerInput" value={this.state.answerInput} onChange={this.inputChange} />
+                    <input
+                        type="text"
+                        name="answerInput"
+                        id="answerInput"
+                        value={this.state.answerInput}
+                        onChange={this.inputChange}
+                    />
                     <button type="submit">Provide answer</button>
                 </form>
             </div>
