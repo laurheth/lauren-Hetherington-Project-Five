@@ -74,13 +74,13 @@ class QuestionThread extends React.Component {
     render() {
         return (
             <div>
-                <button onClick={this.exit}>Return to questions list</button>
+                <button className="returnButton" onClick={this.exit}>Return to questions list</button>
                 <h2>{this.state.question}</h2>
                 <ul>
                     {this.state.answers.map((answer,index) => {
                         return (
                             <li key={this.props.selectedQuestion+index}>
-                                <p>{answer.text}</p>
+                                <p className="textContent">{answer.text}</p>
                                 <VoteKnob dbRef={answer.answerRef} upvotes={answer.upvotes} voteKey={this.props.selectedQuestion+answer.answerKey} interactedWith={this.props.interactedWith} />
                             </li>
                         )

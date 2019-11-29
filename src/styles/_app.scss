@@ -1,0 +1,66 @@
+.wrapper {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+body {
+    background: $mainBackground;
+    color: $mainColor;
+}
+
+header {
+    padding: 40px 0;
+    background: $secondaryBackground;
+    color: $secondaryColor;
+    h1 {
+        text-align: center;
+        text-shadow: 3px 3px 0 $mainAccent;
+    }
+}
+
+main {
+    padding: 20px 0;
+    min-height: 100vh;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    label {
+        display: block;
+        width: 100%;
+    }
+    input {
+        flex-grow: 1;
+    }
+}
+
+ul {
+    li {
+        display: flex;
+        margin: 20px 0;
+        border: 4px $secondaryBackground solid;
+        padding: 10px;
+        .textContent {
+            flex-grow: 1;
+        }
+    }
+}
+.voteKnob {
+    display: flex;
+}
+.returnButton {
+    display: block;
+    margin: 0 auto;
+}
+
+h2 {
+    margin: 20px 0;
+}
+
+footer {
+    padding: 40px 0;
+    background: $secondaryBackground;
+    color: $secondaryColor;
+}

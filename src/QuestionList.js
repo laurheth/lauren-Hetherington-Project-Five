@@ -14,7 +14,7 @@ function QuestionList(props) {
             {props.questionList.map((question) => {
                 return (
                 <li key={question.key}  >
-                    <p onClick={() => props.questionSelect(question.key)} >{question.text}</p>
+                    <p className="textContent" onClick={() => props.questionSelect(question.key)} >{question.text}</p>
                     <VoteKnob dbRef={firebase.database().ref(question.key)} upvotes={question.upvotes} voteKey={question.key} interactedWith={props.interactedWith} />
                 </li>
                 )

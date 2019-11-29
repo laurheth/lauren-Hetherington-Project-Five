@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import firebase from './firebase';
 import QuestionList from './QuestionList';
 import QuestionThread from './QuestionThread';
@@ -76,15 +75,28 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <h1>Cleverly Named Questions App</h1>
-        {
-          (this.state.selectedQuestion) ? (
-            <QuestionThread selectedQuestion={this.state.selectedQuestion} returnFunction={this.selectQuestion} interactedWith={this.state.interactedWith} />
-          ) :
-          (
-            <QuestionList questionList={this.state.questionList} inputChange={this.inputChange} questionSubmit={this.questionSubmit} questionInput={this.state.questionInput} questionSelect={this.selectQuestion} interactedWith={this.state.interactedWith} />
-          )
-        }
+        <header>
+          <div className="wrapper">
+            <h1>Cleverly Named Questions App</h1>
+          </div>
+        </header>
+        <div className="wrapper">
+          <main>
+            {
+              (this.state.selectedQuestion) ? (
+                <QuestionThread selectedQuestion={this.state.selectedQuestion} returnFunction={this.selectQuestion} interactedWith={this.state.interactedWith} />
+              ) :
+              (
+                <QuestionList questionList={this.state.questionList} inputChange={this.inputChange} questionSubmit={this.questionSubmit} questionInput={this.state.questionInput} questionSelect={this.selectQuestion} interactedWith={this.state.interactedWith} />
+              )
+            }
+          </main>
+        </div>
+        <footer>
+          <div className="wrapper">
+            <p>Some kind of copyright something or another</p>
+          </div>
+        </footer>
       </div>
     );
   }
