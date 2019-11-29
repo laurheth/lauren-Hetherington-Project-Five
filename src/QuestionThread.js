@@ -1,4 +1,5 @@
 import React from 'react';
+import VoteKnob from './VoteKnob';
 import firebase from './firebase';
 
 class QuestionThread extends React.Component {
@@ -21,10 +22,16 @@ class QuestionThread extends React.Component {
             for (let answer in questionObj.answers) {
 
                 answers.push({
+                    answerRef:firebase.database().ref(`${this.props.selectedQuestion}/answers/${answer}`),
+                    answerKey: answer,
                     text:questionObj.answers[answer].answer,
-                    upvotes:questionObj.answers[answer].upvotes
+                    upvotes:questionObj.answers[answer].upvotes,
                 })
             }
+
+            answers.sort((a,b) => b.upvotes - a.upvotes);
+
+
             this.setState({
                 answers: answers,
                 question: questionObj.question
@@ -41,6 +48,29 @@ class QuestionThread extends React.Component {
         this.props.returnFunction();
     }
 
+    inputChange = (event) => {
+        this.setState({
+            answerInput: event.target.value
+        });
+    }
+    
+    answerSubmit = (event) => {
+        event.preventDefault();
+        if (this.state.answerInput !== "") {
+            const newAnswer = {
+                answer: this.state.answerInput,
+                upvotes: 0,
+            }
+            this.setState({
+                answerInput: ""
+            })
+
+            const answersRef = firebase.database().ref(`${this.props.selectedQuestion}/answers`);
+
+            answersRef.push(newAnswer);
+        }
+    }
+
     render() {
         return (
             <div>
@@ -51,10 +81,16 @@ class QuestionThread extends React.Component {
                         return (
                             <li key={this.props.selectedQuestion+index}>
                                 <p>{answer.text}</p>
+                                <VoteKnob dbRef={answer.answerRef} upvotes={answer.upvotes} voteKey={this.props.selectedQuestion+answer.answerKey} interactedWith={this.props.interactedWith} />
                             </li>
                         )
                     })}
                 </ul>
+                <form onSubmit={this.answerSubmit}>
+                    <label htmlFor="answerInput">Enter your answer : </label>
+                    <input type="text" name="answerInput" id="answerInput" value={this.state.answerInput} onChange={this.inputChange} />
+                    <button type="submit">Provide answer</button>
+                </form>
             </div>
         )
     }

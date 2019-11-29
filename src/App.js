@@ -12,7 +12,8 @@ class App extends React.Component {
       questionList: [],
       dbRef: {},
       questionInput: "",
-      selectedQuestion: null
+      selectedQuestion: null,
+      interactedWith: {}
     }
   }
 
@@ -30,9 +31,12 @@ class App extends React.Component {
       for (let key in questions) {
         questionList.push({
           key: key,
-          text: questions[key].question
+          text: questions[key].question,
+          upvotes: questions[key].upvotes
         })
       }
+
+      questionList.sort((a,b) => b.upvotes - a.upvotes);
 
       this.setState({
         questionList: questionList
@@ -43,7 +47,7 @@ class App extends React.Component {
 
   inputChange = (event) => {
     this.setState({
-      [event.target.id]: event.target.value
+      questionInput: event.target.value
     });
   }
 
@@ -75,10 +79,10 @@ class App extends React.Component {
         <h1>Cleverly Named Questions App</h1>
         {
           (this.state.selectedQuestion) ? (
-            <QuestionThread selectedQuestion={this.state.selectedQuestion} returnFunction={this.selectQuestion} />
+            <QuestionThread selectedQuestion={this.state.selectedQuestion} returnFunction={this.selectQuestion} interactedWith={this.state.interactedWith} />
           ) :
           (
-            <QuestionList questionList={this.state.questionList} inputChange={this.inputChange} questionSubmit={this.questionSubmit} questionInput={this.state.questionInput} questionSelect={this.selectQuestion} />
+            <QuestionList questionList={this.state.questionList} inputChange={this.inputChange} questionSubmit={this.questionSubmit} questionInput={this.state.questionInput} questionSelect={this.selectQuestion} interactedWith={this.state.interactedWith} />
           )
         }
       </div>
