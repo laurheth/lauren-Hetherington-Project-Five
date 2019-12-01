@@ -9,6 +9,18 @@ body {
     color: $mainColor;
 }
 
+body > div, .App {
+    min-height: 100vh;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    > div {
+        flex-grow: 1;
+    }
+}
+
 header {
     padding: 40px 0;
     background: $secondaryBackground;
@@ -21,7 +33,6 @@ header {
 
 main {
     padding: 20px 0;
-    min-height: 100vh;
 }
 
 form {
@@ -36,11 +47,23 @@ form {
     }
 }
 
+button {
+    background: $mainAccent;
+    color: $mainColor;
+    border: $mainAccent 2px solid;
+    padding: 5px 20px;
+    &:hover, &:focus {
+        color: $mainAccent;
+        background: $mainColor;
+    }
+}
+
 ul {
     li {
         display: flex;
         margin: 20px 0;
         border: 4px $secondaryBackground solid;
+        align-items: center;
         padding: 10px;
         .textContent {
             flex-grow: 1;
@@ -49,6 +72,7 @@ ul {
 }
 .voteKnob {
     display: flex;
+    align-items: center;
 }
 .returnButton {
     display: block;
@@ -63,4 +87,5 @@ footer {
     padding: 40px 0;
     background: $secondaryBackground;
     color: $secondaryColor;
+    text-align: center;
 }
