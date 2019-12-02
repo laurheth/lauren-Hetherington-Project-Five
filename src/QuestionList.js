@@ -26,9 +26,13 @@ function QuestionList(props) {
                 <li key={question.key}  >
                     <p
                         className="textContent"
-                        onClick={() => props.questionSelect(question.key)}
-                    >
-                        {question.text}
+                        >
+                        <a
+                            href='#'
+                            onClick={() => props.questionSelect(question.key)}
+                        >
+                            {question.text}
+                        </a>
                     </p>
                     <VoteKnob
                         dbRef={firebase.database().ref(question.key)}

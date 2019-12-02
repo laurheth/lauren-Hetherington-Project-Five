@@ -58,7 +58,11 @@ form {
         width: 100%;
     }
     input {
+        size: 1;
         flex-grow: 1;
+        flex-shrink: 1;
+        padding: 5px 10px;
+        border: none;
     }
 }
 
@@ -67,6 +71,7 @@ button {
     color: $mainDark;
     border: $mainAccent 2px solid;
     padding: 5px 20px;
+    transition: 0.3s;
     &:hover, &:focus {
         color: $mainAccent;
         background: $mainDark;
@@ -82,21 +87,36 @@ ul {
     li {
         display: flex;
         margin: 20px 0;
-        // border: 4px $mainDark solid;
         background: lighten($secondaryAccent,30%);
         box-shadow: 10px 10px 0 $secondaryAccent;
         align-items: stretch;
-        .textContent {
-            flex-grow: 1;
-            padding: 10px;
+        transition: 0.3s;
+        &:hover, &:focus-within {
+            box-shadow: 12px 12px 0 $secondaryAccent;
+            transform: translate(-2px, -2px);
         }
-        
+    }
+}
+
+.textContent {
+    flex-grow: 1;
+    a {
+        display: block;
+        width: 100%;
+        transition: 0.3s;
+        &:hover, &:focus {
+            color: $mainAccent;
+        }
+    }
+    a, &.answerText {
+        padding: 10px;
     }
 }
 
 .voteKnob {
     display: flex;
     align-items: stretch;
+    background: $mainLight;
     p {
         align-self: center;
         padding: 0 5px;

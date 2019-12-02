@@ -43,6 +43,10 @@ class QuestionThread extends React.Component {
         })
     }
 
+    componentWillUnmount() {
+        this.state.questionRef.off('value');
+    }
+
     exit = (e) => {
         e.preventDefault();
         this.props.returnFunction();
@@ -79,7 +83,7 @@ class QuestionThread extends React.Component {
                     {this.state.answers.map((answer,index) => {
                         return (
                             <li key={this.props.selectedQuestion+index}>
-                                <p className="textContent">{answer.text}</p>
+                                <p className="textContent answerText">{answer.text}</p>
                                 <VoteKnob
                                     dbRef={answer.answerRef}
                                     upvotes={answer.upvotes}

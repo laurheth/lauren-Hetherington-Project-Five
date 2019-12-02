@@ -1,0 +1,21 @@
+@media (max-width: 650px) {
+    form {
+        label {
+            text-align: center;
+        }
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 450px) {
+    ul li {
+        flex-wrap: wrap;
+    }
+
+    .voteKnob {
+        width: 100%;
+        p, button {
+            flex-grow: 1;
+        }
+    }
+}

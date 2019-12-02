@@ -7,7 +7,6 @@ function VoteKnob(props) {
             props.interactedWith[props.voteKey]=0;
         }
         props.interactedWith[props.voteKey] += delta;
-        console.log(props.interactedWith);
         props.dbRef.update({
             upvotes:props.upvotes+delta
         })
