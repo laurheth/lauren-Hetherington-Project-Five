@@ -79,7 +79,7 @@ class QuestionThread extends React.Component {
         return (
             <div>
                 <h2>{this.state.question}</h2>
-                <ul>
+                <ul className="questionThread">
                     {this.state.answers.map((answer,index) => {
                         return (
                             <li key={this.props.selectedQuestion+index}>
@@ -94,8 +94,10 @@ class QuestionThread extends React.Component {
                         )
                     })}
                 </ul>
-                <form onSubmit={this.answerSubmit}>
-                    <label htmlFor="answerInput">Enter your answer : </label>
+                <form 
+                    className="answerForm"
+                    onSubmit={this.answerSubmit}>
+                    <label htmlFor="answerInput">Enter your answer: </label>
                     <input
                         type="text"
                         name="answerInput"

@@ -5,9 +5,11 @@ import firebase from './firebase';
 function QuestionList(props) {
     return (
         <div>
-            <form onSubmit={props.questionSubmit}>
+            <form 
+                className="questionForm"
+                onSubmit={props.questionSubmit}>
                 <label htmlFor="questionInput">
-                    Enter your question :
+                    Enter your question:
                 </label>
                 <input
                     type="text"
@@ -20,7 +22,7 @@ function QuestionList(props) {
                     Ask Question
                 </button>
             </form>
-            <ul>
+            <ul className="questionList">
             {props.questionList.map((question) => {
                 return (
                 <li key={question.key}  >

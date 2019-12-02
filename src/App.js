@@ -81,7 +81,7 @@ class App extends React.Component {
           </div>
         </header>
         <div className="wrapper">
-          <main>
+          <main id="main">
             {
               (this.state.selectedQuestion) ? (
                 <QuestionThread

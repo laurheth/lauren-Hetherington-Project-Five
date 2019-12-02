@@ -1,9 +1,6 @@
 html {
     font-size: 125%;
-}
-
-body {
-    font-size: 1rem;
+    scroll-behavior: smooth;
 }
 
 .wrapper {
@@ -14,6 +11,7 @@ body {
 
 body {
     background: lighten($secondaryAccent,40%);
+    font-size: 1rem;
     color: $mainDark;
     font-family: $mainFont;
 }
@@ -33,6 +31,8 @@ body > div, .App {
 header {
     padding: 40px 0;
     background: darken($secondaryAccent,20%);
+    // Background image from https://www.transparenttextures.com/
+    background-image: url(../assets/bright-squares.png);
     color: $mainLight;
     h1 {
         font-size: 2rem;
@@ -53,7 +53,14 @@ main {
 form {
     display: flex;
     flex-wrap: wrap;
+    &.questionForm {
+        margin-bottom: 30px;
+    }
+    &.answerForm {
+        margin: 30px 0;
+    }
     label {
+        font-family: $secondaryFont;
         display: block;
         width: 100%;
     }
@@ -87,14 +94,27 @@ ul {
     li {
         display: flex;
         margin: 20px 0;
-        background: lighten($secondaryAccent,30%);
-        box-shadow: 10px 10px 0 $secondaryAccent;
         align-items: stretch;
         transition: 0.3s;
+    }
+}
+
+ul.questionList {
+    li {
+        background: lighten($secondaryAccent,30%);
+        box-shadow: 10px 10px 0 $secondaryAccent;
         &:hover, &:focus-within {
             box-shadow: 12px 12px 0 $secondaryAccent;
             transform: translate(-2px, -2px);
         }
+    }
+}
+
+ul.questionThread {
+    li {
+        background: darken($secondaryAccent,20%);
+        box-shadow: 10px 10px 0 $secondaryAccent;
+        color: $mainLight;
     }
 }
 
@@ -117,6 +137,7 @@ ul {
     display: flex;
     align-items: stretch;
     background: $mainLight;
+    color: $mainDark;
     p {
         align-self: center;
         padding: 0 5px;
@@ -141,6 +162,9 @@ h2 {
 footer {
     padding: 40px 0;
     background: darken($secondaryAccent,20%);
+    // Background image from https://www.transparenttextures.com/
+    background-image: url(../assets/bright-squares.png);
     color: $mainLight;
     text-align: center;
+    text-shadow: 1px 1px 0 $mainAccent;
 }
