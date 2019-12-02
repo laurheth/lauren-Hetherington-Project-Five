@@ -1,0 +1,25 @@
+@keyframes moveDown {
+    from {
+        transform: translateY(calc(-100% - 20px));
+    }
+    to {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes moveUp {
+    from {
+        transform: translateY(calc(100% + 20px));
+    }
+    to {
+        transform: translateY(0%);
+    }
+}
+
+.moveUp {
+    animation: 0.3s moveUp forwards;
+}
+
+.moveDown {
+    animation: 0.3s moveDown forwards;
+}

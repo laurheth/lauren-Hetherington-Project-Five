@@ -8,11 +8,12 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      questionList: [],
-      dbRef: {},
-      questionInput: "",
-      selectedQuestion: null,
-      interactedWith: {}
+      questionList: [], // list of question objects
+      questionSortedKeys: [], // sorted array of keys (used to determine switches)
+      dbRef: {}, // reference for database
+      questionInput: "", // current question input
+      selectedQuestion: null, // current selected question
+      interactedWith: {} // object containing items that have been interacted with
     }
   }
 
@@ -37,8 +38,25 @@ class App extends React.Component {
 
       questionList.sort((a,b) => b.upvotes - a.upvotes);
 
+      const questionSortedKeys = [];
+
+      questionList.forEach((question,index) => {
+        questionSortedKeys.push(question.key);
+        // question key positon changed
+        const oldIndex = this.state.questionSortedKeys.indexOf(question.key);
+        if (oldIndex >= 0 && oldIndex !== index) {
+          if (oldIndex < index) {
+            question.moved = 1;
+          }
+          else {
+            question.moved = -1;
+          }
+        }
+      });      
+
       this.setState({
-        questionList: questionList
+        questionList: questionList,
+        questionSortedKeys: questionSortedKeys
       })
 
     });

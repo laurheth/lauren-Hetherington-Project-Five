@@ -8,6 +8,7 @@ class QuestionThread extends React.Component {
         this.state = {
             question: "",
             answers: [],
+            answersSortedKeys: [], // sorted array of keys (used to determine switches)
             answerInput: "",
             questionRef: {}
         }
@@ -31,9 +32,27 @@ class QuestionThread extends React.Component {
 
             answers.sort((a,b) => b.upvotes - a.upvotes);
 
+            const answersSortedKeys = [];
+
+            answers.forEach((answer,index) => {
+              answersSortedKeys.push(answer.answerKey);
+              // question key positon changed
+              const oldIndex = this.state.answersSortedKeys.indexOf(answer.answerKey);
+              if (oldIndex >= 0 && oldIndex !== index) {
+                if (oldIndex < index) {
+                  answer.moved = 1;
+                }
+                else {
+                  answer.moved = -1;
+                }
+              }
+            });
+
+            console.log(answers);
 
             this.setState({
                 answers: answers,
+                answersSortedKeys: answersSortedKeys,
                 question: questionObj.question
             })
         });
@@ -82,7 +101,13 @@ class QuestionThread extends React.Component {
                 <ul className="questionThread">
                     {this.state.answers.map((answer,index) => {
                         return (
-                            <li key={this.props.selectedQuestion+index}>
+                            <li key={this.props.selectedQuestion+answer.answerKey}
+                            className={('moved' in answer) ? 
+                                (answer.moved>0 ? 
+                                    "moveDown" :
+                                    "moveUp")
+                                : null}
+                            >
                                 <p className="textContent answerText">{answer.text}</p>
                                 <VoteKnob
                                     dbRef={answer.answerRef}

@@ -25,7 +25,13 @@ function QuestionList(props) {
             <ul className="questionList">
             {props.questionList.map((question) => {
                 return (
-                <li key={question.key}  >
+                <li key={question.key} 
+                    className={('moved' in question) ? 
+                    (question.moved>0 ? 
+                        "moveDown" :
+                        "moveUp")
+                    : null}
+                >
                     <p
                         className="textContent"
                         >
