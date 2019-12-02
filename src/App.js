@@ -77,7 +77,7 @@ class App extends React.Component {
       <div className="App">
         <header>
           <div className="wrapper">
-            <h1>Cleverly Named Questions App</h1>
+            <h1>Questionable Questions</h1>
           </div>
         </header>
         <div className="wrapper">
@@ -105,7 +105,7 @@ class App extends React.Component {
         </div>
         <footer>
           <div className="wrapper">
-            <p>Some kind of copyright something or another</p>
+            <p>© 2019 Lauren Hetherington</p>
           </div>
         </footer>
       </div>

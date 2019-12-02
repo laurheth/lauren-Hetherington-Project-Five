@@ -1,3 +1,11 @@
+html {
+    font-size: 125%;
+}
+
+body {
+    font-size: 1rem;
+}
+
 .wrapper {
     width: 80%;
     max-width: 800px;
@@ -5,8 +13,9 @@
 }
 
 body {
-    background: $mainBackground;
-    color: $mainColor;
+    background: lighten($secondaryAccent,40%);
+    color: $mainDark;
+    font-family: $mainFont;
 }
 
 body > div, .App {
@@ -23,12 +32,18 @@ body > div, .App {
 
 header {
     padding: 40px 0;
-    background: $secondaryBackground;
-    color: $secondaryColor;
+    background: darken($secondaryAccent,20%);
+    color: $mainLight;
     h1 {
+        font-size: 2rem;
         text-align: center;
         text-shadow: 3px 3px 0 $mainAccent;
     }
+}
+
+h1,h2,h3, button {
+    font-family: $secondaryFont;
+    font-weight: normal;
 }
 
 main {
@@ -49,12 +64,17 @@ form {
 
 button {
     background: $mainAccent;
-    color: $mainColor;
+    color: $mainDark;
     border: $mainAccent 2px solid;
     padding: 5px 20px;
     &:hover, &:focus {
         color: $mainAccent;
-        background: $mainColor;
+        background: $mainDark;
+    }
+    &:disabled {
+        color: $mainDark;
+        background: lighten($mainDark,50%);
+        border-color: lighten($mainDark,50%);
     }
 }
 
@@ -62,21 +82,36 @@ ul {
     li {
         display: flex;
         margin: 20px 0;
-        border: 4px $secondaryBackground solid;
-        align-items: center;
-        padding: 10px;
+        // border: 4px $mainDark solid;
+        background: lighten($secondaryAccent,30%);
+        box-shadow: 10px 10px 0 $secondaryAccent;
+        align-items: stretch;
         .textContent {
             flex-grow: 1;
+            padding: 10px;
         }
+        
     }
 }
+
 .voteKnob {
     display: flex;
-    align-items: center;
+    align-items: stretch;
+    p {
+        align-self: center;
+        padding: 0 5px;
+        text-align: center;
+    }
+    button {
+        padding: 2px 10px;
+    }
+    p, button {
+        min-width: calc(2rem);
+    }
 }
 .returnButton {
     display: block;
-    margin: 0 auto;
+    margin: 20px auto;
 }
 
 h2 {
@@ -85,7 +120,7 @@ h2 {
 
 footer {
     padding: 40px 0;
-    background: $secondaryBackground;
-    color: $secondaryColor;
+    background: darken($secondaryAccent,20%);
+    color: $mainLight;
     text-align: center;
 }

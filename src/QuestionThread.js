@@ -74,12 +74,6 @@ class QuestionThread extends React.Component {
     render() {
         return (
             <div>
-                <button
-                    className="returnButton"
-                    onClick={this.exit}
-                >
-                    Return to questions list
-                </button>
                 <h2>{this.state.question}</h2>
                 <ul>
                     {this.state.answers.map((answer,index) => {
@@ -107,6 +101,12 @@ class QuestionThread extends React.Component {
                     />
                     <button type="submit">Provide answer</button>
                 </form>
+                <button
+                    className="returnButton"
+                    onClick={this.exit}
+                >
+                    Return to questions list
+                </button>
             </div>
         )
     }

@@ -14,10 +14,10 @@ function VoteKnob(props) {
     }
     return (
         <div className="voteKnob">
-            <p>{props.upvotes}</p>
             {
                 <button onClick={(e)=>{vote(e,1)}} disabled={(props.interactedWith[props.voteKey] && props.interactedWith[props.voteKey] >= 1)}>+</button>
             }
+            <p>{props.upvotes}</p>
             {
                 <button onClick={(e)=>{vote(e,-1)}} disabled={(props.interactedWith[props.voteKey] && props.interactedWith[props.voteKey] <= -1)}>-</button>
             }

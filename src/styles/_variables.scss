@@ -1,5 +1,9 @@
-$mainBackground: #ffffff;
-$secondaryBackground: #000000;
-$mainColor: #000000;
-$secondaryColor: #ffffff;
+$mainLight: #ffffff;
+$mainDark: #000000;
 $mainAccent: #ff00aa;
+$secondaryAccent: #00aaff;
+
+@import url('https://fonts.googleapis.com/css?family=Nova+Mono|PT+Serif&display=swap');
+
+$mainFont: 'PT Serif', serif;
+$secondaryFont: 'Nova Mono', monospace;
