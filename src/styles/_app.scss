@@ -101,11 +101,15 @@ ul {
 
 ul.questionList {
     li {
+        position: relative;
         background: lighten($secondaryAccent,30%);
         box-shadow: 10px 10px 0 $secondaryAccent;
+        top: 0;
+        left: 0;
         &:hover, &:focus-within {
             box-shadow: 12px 12px 0 $secondaryAccent;
-            transform: translate(-2px, -2px);
+            left: -2px;
+            top: -2px;
         }
     }
 }

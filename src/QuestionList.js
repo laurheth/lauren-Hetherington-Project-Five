@@ -23,9 +23,9 @@ function QuestionList(props) {
                 </button>
             </form>
             <ul className="questionList">
-            {props.questionList.map((question) => {
+            {props.questionList.map((question,index) => {
                 return (
-                <li key={question.key} 
+                <li key={question.key+index} 
                     className={('moved' in question) ? 
                     (question.moved>0 ? 
                         "moveDown" :

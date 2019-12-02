@@ -101,7 +101,7 @@ class QuestionThread extends React.Component {
                 <ul className="questionThread">
                     {this.state.answers.map((answer,index) => {
                         return (
-                            <li key={this.props.selectedQuestion+answer.answerKey}
+                            <li key={this.props.selectedQuestion+answer.answerKey+index}
                             className={('moved' in answer) ? 
                                 (answer.moved>0 ? 
                                     "moveDown" :
