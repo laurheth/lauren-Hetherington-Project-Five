@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/laurenHetheringtonProjectFive/static/css/main.d640c625.chunk.css",
+    "main.css": "/laurenHetheringtonProjectFive/static/css/main.465d9020.chunk.css",
     "main.js": "/laurenHetheringtonProjectFive/static/js/main.fccce87d.chunk.js",
     "main.js.map": "/laurenHetheringtonProjectFive/static/js/main.fccce87d.chunk.js.map",
     "runtime-main.js": "/laurenHetheringtonProjectFive/static/js/runtime-main.b037a59e.js",
@@ -8,15 +8,15 @@
     "static/js/2.54506077.chunk.js": "/laurenHetheringtonProjectFive/static/js/2.54506077.chunk.js",
     "static/js/2.54506077.chunk.js.map": "/laurenHetheringtonProjectFive/static/js/2.54506077.chunk.js.map",
     "index.html": "/laurenHetheringtonProjectFive/index.html",
-    "precache-manifest.f9ca96d6441def85c40504f4ec7ebf83.js": "/laurenHetheringtonProjectFive/precache-manifest.f9ca96d6441def85c40504f4ec7ebf83.js",
+    "precache-manifest.7af30b08990ffa39d6ddeb510b047547.js": "/laurenHetheringtonProjectFive/precache-manifest.7af30b08990ffa39d6ddeb510b047547.js",
     "service-worker.js": "/laurenHetheringtonProjectFive/service-worker.js",
-    "static/css/main.d640c625.chunk.css.map": "/laurenHetheringtonProjectFive/static/css/main.d640c625.chunk.css.map",
+    "static/css/main.465d9020.chunk.css.map": "/laurenHetheringtonProjectFive/static/css/main.465d9020.chunk.css.map",
     "static/media/styles.scss": "/laurenHetheringtonProjectFive/static/media/bright-squares.53c1ec5f.png"
   },
   "entrypoints": [
     "static/js/runtime-main.b037a59e.js",
     "static/js/2.54506077.chunk.js",
-    "static/css/main.d640c625.chunk.css",
+    "static/css/main.465d9020.chunk.css",
     "static/js/main.fccce87d.chunk.js"
   ]
 }
