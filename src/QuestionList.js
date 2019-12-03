@@ -2,6 +2,7 @@ import React from 'react';
 import VoteKnob from './VoteKnob';
 import firebase from './firebase';
 
+// function component that lists every question
 function QuestionList(props) {
     return (
         <div>
@@ -17,6 +18,7 @@ function QuestionList(props) {
                     id="questionInput"
                     value={props.questionInput}
                     onChange={props.inputChange}
+                    maxLength="140"
                 />
                 <button type="submit">
                     Ask Question
@@ -26,7 +28,7 @@ function QuestionList(props) {
             {props.questionList.map((question,index) => {
                 return (
                 <li key={question.key+index} 
-                    className={('moved' in question) ? 
+                    className={('moved' in question) ?  // if they moved, animate them
                     (question.moved>0 ? 
                         "moveDown" :
                         "moveUp")
@@ -37,7 +39,7 @@ function QuestionList(props) {
                         >
                         <a
                             href='#'
-                            onClick={() => props.questionSelect(question.key)}
+                            onClick={() => props.questionSelect(question.key)} // listener to choose question
                         >
                             {question.text}
                         </a>

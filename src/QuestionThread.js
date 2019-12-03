@@ -2,6 +2,7 @@ import React from 'react';
 import VoteKnob from './VoteKnob';
 import firebase from './firebase';
 
+// Component for a specific question thread
 class QuestionThread extends React.Component {
     constructor() {
         super();
@@ -15,6 +16,7 @@ class QuestionThread extends React.Component {
     }
 
     componentDidMount() {
+        // listener for specific question
         const questionRef = firebase.database().ref(this.props.selectedQuestion);
         questionRef.on('value', (snapshot) => {
             const questionObj = snapshot.val();
@@ -62,6 +64,7 @@ class QuestionThread extends React.Component {
         })
     }
 
+    // remove listener when the thread view is unmounted
     componentWillUnmount() {
         this.state.questionRef.off('value');
     }
@@ -77,6 +80,7 @@ class QuestionThread extends React.Component {
         });
     }
     
+    // submit an answer
     answerSubmit = (event) => {
         event.preventDefault();
         if (this.state.answerInput !== "") {
@@ -87,6 +91,11 @@ class QuestionThread extends React.Component {
             this.setState({
                 answerInput: ""
             })
+
+            // clamp its length
+            if (newAnswer.answer.length > 140) {
+                newAnswer.answer = newAnswer.answer.substring(0,141);
+            }
 
             const answersRef = firebase.database().ref(`${this.props.selectedQuestion}/answers`);
 
@@ -129,6 +138,7 @@ class QuestionThread extends React.Component {
                         id="answerInput"
                         value={this.state.answerInput}
                         onChange={this.inputChange}
+                        maxLength="140"
                     />
                     <button type="submit">Provide answer</button>
                 </form>

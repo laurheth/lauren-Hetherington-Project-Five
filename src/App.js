@@ -24,6 +24,7 @@ class App extends React.Component {
       dbRef: dbRef
     });
 
+    // Set up database listener to fill in question list
     dbRef.on('value', (snapshot) => {
       const questions = snapshot.val();
 
@@ -36,10 +37,12 @@ class App extends React.Component {
         })
       }
 
+      // sort questions by upvotes
       questionList.sort((a,b) => b.upvotes - a.upvotes);
 
       const questionSortedKeys = [];
 
+      // Keep track of order, and which ones switched
       questionList.forEach((question,index) => {
         questionSortedKeys.push(question.key);
         // question key positon changed
@@ -62,12 +65,14 @@ class App extends React.Component {
     });
   }
 
+  // question input
   inputChange = (event) => {
     this.setState({
       questionInput: event.target.value
     });
   }
 
+  // submit question
   questionSubmit = (event) => {
     event.preventDefault();
     if (this.state.questionInput !== "") {
@@ -77,6 +82,10 @@ class App extends React.Component {
         postDate: Date.now(),
         answers: {}
       }
+      // clamp maximum length, in case the textbox gets overridden somehow
+      if (newQuestion.question.length > 140) {
+        newQuestion.question = newQuestion.question.substring(0,141);
+      }
       this.setState({
         questionInput: ""
       })
@@ -84,6 +93,7 @@ class App extends React.Component {
     }
   }
 
+  // select (or deselect) question
   selectQuestion = (id=null) => {
     this.setState({
       selectedQuestion: id
@@ -101,6 +111,7 @@ class App extends React.Component {
         <div className="wrapper">
           <main id="main">
             {
+              // If a question is selected, display its thread
               (this.state.selectedQuestion) ? (
                 <QuestionThread
                   selectedQuestion={this.state.selectedQuestion}
@@ -109,6 +120,7 @@ class App extends React.Component {
                 />
               ) :
               (
+                // Otherwise, display the list of questions
                 <QuestionList
                   questionList={this.state.questionList}
                   inputChange={this.inputChange}
