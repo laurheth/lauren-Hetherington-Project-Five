@@ -68,7 +68,8 @@ class App extends React.Component {
   // question input
   inputChange = (event) => {
     this.setState({
-      questionInput: event.target.value
+      questionInput: event.target.value, // set chosen question
+      questionSortedKeys: [] // remove remembered question sorting, to prevent unwanted animation
     });
   }
 
