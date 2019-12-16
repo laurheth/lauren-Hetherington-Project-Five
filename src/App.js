@@ -2,6 +2,7 @@ import React from 'react';
 import firebase from './firebase';
 import QuestionList from './QuestionList';
 import QuestionThread from './QuestionThread';
+import Swal from 'sweetalert2'
 
 // function App() {
 class App extends React.Component {
@@ -90,6 +91,8 @@ class App extends React.Component {
         questionInput: ""
       })
       this.state.dbRef.push(newQuestion);
+    } else {
+      Swal.fire("Error!", "Please type in a question!",'error');
     }
   }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import VoteKnob from './VoteKnob';
 import firebase from './firebase';
+import Swal from 'sweetalert2'
 
 // Component for a specific question thread
 class QuestionThread extends React.Component {
@@ -100,6 +101,8 @@ class QuestionThread extends React.Component {
             const answersRef = firebase.database().ref(`${this.props.selectedQuestion}/answers`);
 
             answersRef.push(newAnswer);
+        } else {
+            Swal.fire("Error!", "Please type in an answer!",'error');
         }
     }
 
